@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>M Collections | Maquillaje, velas, cobijas y más</title>
+<meta name="description" content="M Collections — vitrina de maquillaje, lociones, velas aromáticas, cobijas y cortinas. Mira el catálogo completo y pide por WhatsApp." />
+
+<!-- Open Graph / redes sociales -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="M Collections" />
+<meta property="og:title" content="M Collections | Maquillaje, velas, cobijas y más" />
+<meta property="og:description" content="Vitrina de productos de M Collections. Explora el catálogo y pide por WhatsApp." />
+<meta property="og:image" content="/assets/favicon-512.png" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<link rel="stylesheet" href="/assets/styles.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-40 backdrop-blur-md border-b hairline" style="background: rgba(247,242,233,0.88);">
+    <div class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="/assets/logo-mark.png" alt="M Collections" class="w-11 h-11 rounded-full object-cover border hairline" />
+        <div>
+          <p class="serif text-2xl tracking-wide leading-none" style="color:var(--espresso)">M COLLECTIONS</p>
+          <p class="text-[10.5px] tracking-widest uppercase mt-1" style="color:var(--coffee-soft)">Hogar &amp; Cuidado</p>
+        </div>
+      </div>
+      <button id="btn-admin-toggle" class="btn-ghost rounded-full w-10 h-10 flex items-center justify-center shrink-0" title="Administrador" aria-label="Administrador">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-5 py-6">
+
+    <!-- ================= STORE VIEW ================= -->
+    <section id="store-view">
+
+      <div class="mb-6">
+        <h1 class="serif text-3xl sm:text-4xl leading-tight" style="color:var(--espresso)">Piezas seleccionadas, listas para ti</h1>
+        <p class="text-sm mt-2 max-w-xl" style="color:var(--coffee)">
+          Maquillaje, lociones, velas aromáticas, cobijas, cortinas y más. Toca un producto para ver los detalles y escríbenos por WhatsApp para hacer tu pedido.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-2 field rounded-full px-4 py-2.5 mb-5 max-w-md">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--coffee-soft)" stroke-width="2" class="shrink-0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input id="search-input" placeholder="Buscar un producto..." class="bg-transparent outline-none text-sm w-full" />
+      </div>
+
+      <div id="section-pills" class="flex gap-2 overflow-x-auto scrollbar-thin pb-2 mb-2"></div>
+
+      <div id="featured-shelf" class="mb-8 hidden">
+        <p class="text-xs uppercase tracking-widest mb-3 flex items-center gap-1.5" style="color:var(--gold-deep)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6L22 9.3l-5 4.9 1.2 7.1L12 17.8l-6.2 3.5L7 14.2 2 9.3l7.1-.7L12 2z"/></svg>
+          Destacados
+        </p>
+        <div id="featured-grid" class="flex gap-4 overflow-x-auto scrollbar-thin pb-3"></div>
+      </div>
+
+      <div id="products-status" class="py-16"></div>
+      <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"></div>
+    </section>
+
+    <!-- ================= ADMIN VIEW ================= -->
+    <section id="admin-view" class="hidden fade-in">
+
+      <div id="admin-login-gate">
+        <div class="max-w-sm mx-auto text-center py-16">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 field">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h2 class="serif text-2xl mb-1">Acceso administrador</h2>
+          <p class="text-sm mb-6" style="color:var(--coffee)">Solo M Collections puede editar la tienda.</p>
+          <input id="login-email" type="email" placeholder="Correo" class="field rounded-lg px-3 py-2.5 w-full text-sm mb-2.5" autocomplete="username" />
+          <input id="login-password" type="password" placeholder="Contraseña" class="field rounded-lg px-3 py-2.5 w-full text-sm mb-2.5" autocomplete="current-password" />
+          <p id="login-error" class="text-xs mb-3 hidden" style="color:var(--danger)"></p>
+          <button id="btn-login" class="btn-gold rounded-lg w-full py-2.5 text-sm">Entrar</button>
+          <button id="btn-back-store-1" class="btn-ghost rounded-lg w-full py-2.5 text-sm mt-2.5">Volver a la tienda</button>
+        </div>
+      </div>
+
+      <div id="admin-panel" class="hidden">
+        <div class="flex items-center justify-between flex-wrap gap-3 mb-6">
+          <button id="btn-back-store-2" class="btn-ghost rounded-full px-4 py-2 text-sm flex items-center gap-1.5">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+            Volver a la tienda
+          </button>
+          <button id="btn-logout" class="btn-ghost rounded-full px-4 py-2 text-sm flex items-center gap-1.5">
+            Cerrar sesión
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+          </button>
+        </div>
+
+        <h1 class="serif text-3xl mb-1">Panel de administrador</h1>
+        <p class="text-sm mb-6" style="color:var(--coffee)">Gestiona los productos y secciones de M Collections.</p>
+
+        <div class="flex gap-2 mb-6">
+          <button class="admin-tab pill rounded-full px-4 py-2 text-sm" data-tab="productos" data-active="true">Productos</button>
+          <button class="admin-tab pill rounded-full px-4 py-2 text-sm" data-tab="secciones">Secciones</button>
+        </div>
+
+        <div id="tab-secciones" class="hidden">
+          <div class="rounded-2xl p-5 max-w-xl" style="background:var(--card); border:1px solid var(--line)">
+            <div class="flex gap-2 mb-4">
+              <input id="new-section-input" placeholder="Nombre de la sección, ej. Velas aromáticas" class="field rounded-lg px-3 py-2.5 flex-1 text-sm" />
+              <button id="btn-add-section" class="btn-gold rounded-lg px-4 flex items-center gap-1.5 text-sm shrink-0">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                Crear
+              </button>
+            </div>
+            <div id="sections-list" class="flex flex-col gap-2"></div>
+          </div>
+        </div>
+
+        <div id="tab-productos">
+          <button id="btn-new-product" class="btn-gold rounded-lg px-4 py-2.5 text-sm flex items-center gap-1.5 mb-5">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            Agregar producto
+          </button>
+          <div id="admin-products-list" class="flex flex-col gap-2"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-5 py-10 text-center text-xs" style="color:var(--coffee-soft)">
+    © <span id="year"></span> M Collections — Hogar &amp; Cuidado
+  </footer>
+</div>
+
+<!-- ================= MODALS (templates, hidden) ================= -->
+
+<div id="product-modal" class="overlay hidden items-center justify-center p-0 sm:p-6"></div>
+<div id="login-modal-root"></div>
+<div id="product-form-root"></div>
+<div id="confirm-root"></div>
+
+<script type="module" src="/assets/app.js"></script>
+</body>
+</html>
